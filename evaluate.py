@@ -22,9 +22,9 @@ sess = tf.Session()
 
 
 IMAGE_H, IMAGE_W = 416, 416
-CLASSES          = utils.read_coco_names('./data/raccoon.names')
+CLASSES          = utils.read_coco_names('./constructionsite_dataset/constructionsite.names')
 NUM_CLASSES      = len(CLASSES)
-ANCHORS          = utils.get_anchors('./data/raccoon_anchors.txt', IMAGE_H, IMAGE_W)
+ANCHORS          = utils.get_anchors('./constructionsite_dataset/constructionsite_anchors.txt', IMAGE_H, IMAGE_W)
 CKPT_FILE        = "./checkpoint/yolov3.ckpt-2500"
 IOU_THRESH       = 0.5
 SCORE_THRESH     = 0.3
@@ -33,10 +33,10 @@ all_detections   = []
 all_annotations  = []
 all_aver_precs   = {CLASSES[i]:0. for i in range(NUM_CLASSES)}
 
-test_tfrecord    = "./raccoon_dataset/raccoon_*.tfrecords"
+test_tfrecord = "./tfrecords/voc_*.tfrecords"
+# test_tfrecord    = "./raccoon_dataset/raccoon_*.tfrecords"
 parser           = Parser(IMAGE_H, IMAGE_W, ANCHORS, NUM_CLASSES)
 testset          = dataset(parser, test_tfrecord , batch_size=1, shuffle=None, repeat=False)
-
 
 images_tensor, *y_true_tensor  = testset.get_next()
 model = yolov3.yolov3(NUM_CLASSES, ANCHORS)
