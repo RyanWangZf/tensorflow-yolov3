@@ -28,6 +28,8 @@ def main(argv):
             example = line.split(' ')
             image_path = example[0]
             boxes_num = len(example[1:]) // 5
+            if boxes_num < 1:
+                continue
             boxes = np.zeros([boxes_num, 5], dtype=np.float32)
             for i in range(boxes_num):
                 boxes[i] = example[1+i*5:6+i*5]
