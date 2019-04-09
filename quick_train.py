@@ -23,14 +23,14 @@ LR               = 0.001 # if Nan, set 0.0005, 0.0001
 DECAY_STEPS      = 100
 DECAY_RATE       = 0.9
 SHUFFLE_SIZE     = 200
-CLASSES          = utils.read_coco_names('./data/raccoon.names')
-ANCHORS          = utils.get_anchors('./data/raccoon_anchors.txt', IMAGE_H, IMAGE_W)
+CLASSES          = utils.read_coco_names('./constructionsite_dataset/constructionsite.names')
+ANCHORS          = utils.get_anchors('./constructionsite_dataset/constructionsite_anchors.txt', IMAGE_H, IMAGE_W)
 NUM_CLASSES      = len(CLASSES)
 EVAL_INTERNAL    = 100
 SAVE_INTERNAL    = 500
 
-train_tfrecord   = "./raccoon_dataset/raccoon_train.tfrecords"
-test_tfrecord    = "./raccoon_dataset/raccoon_test.tfrecords"
+train_tfrecord   = "./tfrecords/voc_train.tfrecords"
+test_tfrecord    = "./tfrecords/voc_test.tfrecords"
 
 parser   = Parser(IMAGE_H, IMAGE_W, ANCHORS, NUM_CLASSES)
 trainset = dataset(parser, train_tfrecord, BATCH_SIZE, shuffle=SHUFFLE_SIZE)
