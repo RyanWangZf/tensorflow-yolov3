@@ -14,7 +14,8 @@
 import tensorflow as tf
 from core import utils, yolov3
 from core.dataset import dataset, Parser
-sess = tf.Session()
+gpu_config = tf.ConfigProto(gpu_options=tf.GPUOptions(per_process_gpu_memory_fraction=0.5,allow_growth=True))
+sess = tf.Session(config=gpu_config)
 
 IMAGE_H, IMAGE_W = 416, 416
 BATCH_SIZE       = 8

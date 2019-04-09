@@ -20,7 +20,7 @@ from core import utils
 IMAGE_H, IMAGE_W = 416, 416
 classes = utils.read_coco_names('./constructionsite_dataset/constructionsite.names')
 num_classes = len(classes)
-image_path = "./constructionsite_dataset/VOC2007/train/JPEGImages/0.jpg"  # 181,
+image_path = "./constructionsite_dataset/VOC2007/train/JPEGImages/23.jpg"
 img = Image.open(image_path)
 img_resized = np.array(img.resize(size=(IMAGE_W, IMAGE_H)), dtype=np.float32)
 img_resized = img_resized / 255.

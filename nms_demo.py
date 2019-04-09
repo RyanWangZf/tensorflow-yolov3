@@ -21,9 +21,12 @@ from core import utils
 IMAGE_H, IMAGE_W = 416, 416
 EPOCHS = 5
 # SIZE = [608, 608]
-classes = utils.read_coco_names('./data/coco.names')
+# classes = utils.read_coco_names('./data/coco.names')
+classes = utils.read_coco_names("./constructionsite_dataset/constructionsite.names")
 num_classes = len(classes)
-image_path = "./data/demo_data/dog.jpg"
+# image_path = "./data/demo_data/road.jpeg"
+image_path = "./data/demo_data/155.jpg"
+
 img = Image.open(image_path)
 img_resized = np.array(img.resize(size=(IMAGE_H, IMAGE_W)), dtype=np.float32)
 img_resized = img_resized / 255.
